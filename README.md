@@ -1,7 +1,3 @@
-#DT MONEY
+#Font-end
 
-## MONEY Application using Reactjs
 
-## Web
-
-<img src="/page.png" />
