@@ -13,16 +13,15 @@ interface User {
   login: {
     uuid: string
   }
+  email: string;
 
 }
-
 
 const UserTable: React.FC = () => {
   const { users } = useList();
 
   const [displayUser, setdisplayUser] = useState<User>({} as User);
   const [displayModalOpen, setdisplayModalOpen] = useState(false);
-
 
   function toggleDisplayModal(): void {
     setdisplayModalOpen(!displayModalOpen);
@@ -36,7 +35,8 @@ const UserTable: React.FC = () => {
 
   return (
     <Container>
-         <ModalDisplayUser
+
+      <ModalDisplayUser
         isOpen={displayModalOpen}
         setIsOpen={toggleDisplayModal}
         displayUser={displayUser}
@@ -59,19 +59,19 @@ const UserTable: React.FC = () => {
               <td>{new Intl.DateTimeFormat('pt-BR').format(
                 new Date(user.dob.date))}</td>
               <td>
-              <button
-              type="button"
-              className="icon"
-              onClick={() => handleDisplayUser(user)}
-              data-testid={`display-user-${user.login.uuid}`}
-            >
-              <FiEye size={20} />
-            </button>
+                <button
+                  type="button"
+                  className="icon"
+                  onClick={() => handleDisplayUser(user)}
+                  data-testid={`display-user-${user.login.uuid}`}
+                >
+                  <FiEye size={20} />
+                </button>
               </td>
               <td>
               </td>
             </tr>
-             
+
           ))}
 
         </tbody>

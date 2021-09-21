@@ -12,6 +12,8 @@ interface IUser {
   login: {
     uuid: string
   }
+  email: string;
+
 }
 
 interface IModalProps {
@@ -30,7 +32,13 @@ const ModalDisplayUser: React.FC<IModalProps> = ({
 
   return (
     <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
-      <h1>{displayUser.gender}</h1>
+     <>
+      
+       <h1>{displayUser.gender}</h1>
+       <h2> {displayUser.email} </h2>
+      
+  
+      </>
     </Modal>
   );
 };
