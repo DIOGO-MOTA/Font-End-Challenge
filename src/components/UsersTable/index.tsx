@@ -17,20 +17,44 @@ interface User {
 
 }
 
+
+interface IUser{
+  img: string;
+  gender: string;
+  nameFirest:string;
+  nameLast: string;
+  email: string;
+  id: string
+}
+
 const UserTable: React.FC = () => {
   const { users } = useList();
 
-  const [displayUser, setdisplayUser] = useState<User>({} as User);
+  const [displayUser, setdisplayUser] = useState<IUser>({} as IUser);
   const [displayModalOpen, setdisplayModalOpen] = useState(false);
+
 
   function toggleDisplayModal(): void {
     setdisplayModalOpen(!displayModalOpen);
   }
 
-  function handleDisplayUser(user: User): void {
+  function handleDisplayUser(user: IUser): void {
     setdisplayUser(user);
     toggleDisplayModal();
   }
+ 
+  const user = users.map(user => {
+    return {
+      img: user.picture.large,
+      gender: user.gender,
+      nameFirest: user.name.first,
+      nameLast: user.name.last,
+      email: user.email,
+      id: user.login.uuid,
+    }
+   
+  })
+
 
 
   return (
@@ -52,18 +76,18 @@ const UserTable: React.FC = () => {
           </tr>
         </thead>
         <tbody>
-          {users.map(user => (
-            <tr key={user.login.uuid}>
-              <td>{user.name.last}</td>
+          {user.map(user => (
+            <tr key={user.id}>
+              <td>{user.nameLast}</td>
               <td>{user.gender}</td>
               <td>{new Intl.DateTimeFormat('pt-BR').format(
-                new Date(user.dob.date))}</td>
+                new Date())}</td>
               <td>
                 <button
                   type="button"
                   className="icon"
                   onClick={() => handleDisplayUser(user)}
-                  data-testid={`display-user-${user.login.uuid}`}
+                  data-testid={`display-user-${user.id}`}
                 >
                   <FiEye size={20} />
                 </button>

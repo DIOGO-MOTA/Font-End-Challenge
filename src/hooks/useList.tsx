@@ -15,14 +15,6 @@ interface User {
 
 }
 
-interface IUser{
-  img: string;
-  gender: string;
-  nameFirest:string;
-  nameLast: string;
-  email: string;
-  id: string
-}
 
 interface UserProviderProps {
   children: ReactNode;
@@ -38,37 +30,17 @@ const UsersContext = createContext<UserContexData>(
 
 export function UserProvider({ children }: UserProviderProps) {
   const [users, setUsers] = useState<User[]>([]);
-  const [data, setData] = useState<IUser>();
+
 
   useEffect(() => {
-   const response = api.get('api/?results=10')
+  api.get('api/?results=10')
       .then(response => 
         setUsers(response.data.results)
         );
   }, []);
 
 
- 
-    const user = users.map(user => {
-      return {
-        img: user.picture.large,
-        gender: user.gender,
-        nameFirest: user.name.first,
-        nameLast: user.name.last,
-        email: user.email,
-        id: user.login.uuid,
-      }
-     
-    })
 
-
-
-
-
-  console.log(user)
-
-
- 
 
   return (
     <UsersContext.Provider value={{ users }}>

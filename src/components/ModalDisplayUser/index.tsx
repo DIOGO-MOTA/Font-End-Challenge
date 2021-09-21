@@ -3,17 +3,13 @@ import React from 'react';
 import Modal from '../Modal';
 
 
-interface IUser {
+interface IUser{
+  img: string;
   gender: string;
-  name: {
-    last: string;
-  }
-  dob: { date: string },
-  login: {
-    uuid: string
-  }
+  nameFirest:string;
+  nameLast: string;
   email: string;
-
+  id: string
 }
 
 interface IModalProps {
@@ -35,7 +31,8 @@ const ModalDisplayUser: React.FC<IModalProps> = ({
      <>
       
        <h1>{displayUser.gender}</h1>
-       <h2> {displayUser.email} </h2>
+       <h2> {displayUser.nameLast} </h2>
+       <h2> {displayUser.id} </h2>
       
   
       </>
