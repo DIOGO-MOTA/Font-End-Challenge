@@ -6,25 +6,20 @@ import { FiEye } from 'react-icons/fi';
 
 import { Container } from './styles';
 
-interface User {
-  gender: string;
-  name: { last: string; }
-  dob: { date: string }
-  login: {
-    uuid: string
-  }
-  email: string;
-
-}
-
-
 interface IUser{
   img: string;
-  gender: string;
   nameFirest:string;
   nameLast: string;
   email: string;
-  id: string
+  gender: string;
+  dob: string;
+  id: string;
+  streetNumber: string;
+  streetName: string;
+  city: string;
+  state: string;
+  country: string;
+  postcode: string;
 }
 
 const UserTable: React.FC = () => {
@@ -42,19 +37,27 @@ const UserTable: React.FC = () => {
     setdisplayUser(user);
     toggleDisplayModal();
   }
- 
-  const user = users.map(user => {
+
+  
+  const userList = users.map(user => {
     return {
-      img: user.picture.large,
+      img: user.picture.thumbnail,
       gender: user.gender,
       nameFirest: user.name.first,
       nameLast: user.name.last,
       email: user.email,
       id: user.login.uuid,
+      dob: user.dob.date,
+      streetNumber: user.location.street.number,
+      streetName: user.location.street.name,
+      city: user.location.city,
+      state: user.location.state,
+      country: user.location.country,
+      postcode: user.location.postcode,
     }
-   
   })
 
+  console.log(users)
 
 
   return (
@@ -76,12 +79,12 @@ const UserTable: React.FC = () => {
           </tr>
         </thead>
         <tbody>
-          {user.map(user => (
+          {userList.map(user => (
             <tr key={user.id}>
-              <td>{user.nameLast}</td>
+              <td>{user.nameFirest}</td>
               <td>{user.gender}</td>
               <td>{new Intl.DateTimeFormat('pt-BR').format(
-                new Date())}</td>
+                new Date(user.dob))}</td>
               <td>
                 <button
                   type="button"
@@ -91,7 +94,7 @@ const UserTable: React.FC = () => {
                 >
                   <FiEye size={20} />
                 </button>
-              </td>
+              </td>          
               <td>
               </td>
             </tr>

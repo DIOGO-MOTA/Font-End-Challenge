@@ -7,9 +7,11 @@ import { Container } from './styles';
 const Dashboard: React.FC = () => {
 
   return (
-    <Container>
-      <UserTable />
-    </Container>
+    <>
+      <Container>
+        <UserTable />
+      </Container>
+    </>
   );
 }
 
