@@ -1,8 +1,9 @@
 import React from 'react';
-import { GlobalStyle } from './styles/global';
+import { BrowserRouter as Router } from 'react-router-dom';
 
-import Header from './components/Header';
-import Dashboard from './components/Dashboard';
+
+import { GlobalStyle } from './styles/global';
+import Routes from './routes';
 import { UserProvider } from './hooks/useList';
 
 
@@ -10,9 +11,10 @@ const App: React.FC = () => {
 
   return (
     <UserProvider>
-      <Header />
-      <Dashboard />
       <GlobalStyle />
+      <Router>
+        <Routes />
+      </Router>
     </UserProvider>
   );
 }

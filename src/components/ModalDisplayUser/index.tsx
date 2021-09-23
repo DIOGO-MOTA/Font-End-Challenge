@@ -1,21 +1,24 @@
 import React from 'react';
 
 import Modal from '../Modal';
+import { Container } from './styles';
 
 
-interface IUser{
+interface IUser {
   img: string;
-  gender: string;
-  nameFirest:string;
+  nameFirest: string;
   nameLast: string;
   email: string;
-  id: string;
+  gender: string;
+  dob: string;
+  phone: string,
   streetNumber: string;
   streetName: string;
   city: string;
   state: string;
   country: string;
   postcode: string;
+  id: string;
 }
 
 interface IModalProps {
@@ -24,6 +27,7 @@ interface IModalProps {
   displayUser: IUser;
 }
 
+
 const ModalDisplayUser: React.FC<IModalProps> = ({
   isOpen,
   setIsOpen,
@@ -31,22 +35,30 @@ const ModalDisplayUser: React.FC<IModalProps> = ({
 }) => {
 
   return (
+
     <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
-     <>
-       <div><img src={displayUser.img}/></div>
-       <ul>
-       <li>Name: {`${displayUser.nameFirest} ${displayUser.nameLast}`} </li>
-       <li>E-mail: {displayUser.email}</li>
-       <li>Gender: {displayUser.gender}</li>
-       <li>street Number: {displayUser.streetNumber} </li>
-       <li>street Name: {displayUser.streetName} </li>
-       <li>City: {displayUser.city} </li>
-       <li> {displayUser.id} </li>
-       </ul>
-      
-  
-      </>
+
+      <Container>
+        <div><img src={displayUser.img} alt={displayUser.nameFirest} /></div>
+        <h1>{`${displayUser.nameFirest} ${displayUser.nameLast}`}</h1>
+        <ul>
+          <li><strong>E-mail:</strong> <span> {displayUser.email}</span></li>
+          <li><strong>Gender:</strong> <span>{displayUser.gender}</span></li>
+          <li><strong>Date of birth:</strong> <span>{displayUser.dob}</span></li>
+          <li><strong>Phone:</strong> <span>{displayUser.phone}</span></li>
+          <li><strong>Street Number:</strong> <span>{displayUser.streetNumber}</span></li>
+          <li><strong>Street Name:</strong> <span>{displayUser.streetName}</span> </li>
+          <li><strong>City:</strong> <span> {displayUser.city}</span></li>
+          <li><strong>State:</strong> <span> {displayUser.state}</span></li>
+          <li><strong>Country:</strong> <span> {displayUser.country}</span></li>
+          <li><strong>Postcode:</strong> <span> {displayUser.postcode}</span></li>
+          <li><strong>Id:</strong> <span> {displayUser.id}</span></li>
+        </ul>
+
+      </Container>
+
     </Modal>
+
   );
 };
 

@@ -2,9 +2,12 @@ import React, { useState } from 'react';
 
 import { useList } from '../../hooks/useList';
 import ModalDisplayUser from '../ModalDisplayUser';
+import { RiSearchLine } from "react-icons/ri";
+
 import { FiEye } from 'react-icons/fi';
 
-import { Container } from './styles';
+
+import { Container, SearchContaine } from './styles';
 
 interface IUser{
   img: string;
@@ -13,21 +16,24 @@ interface IUser{
   email: string;
   gender: string;
   dob: string;
-  id: string;
+  phone: string,
   streetNumber: string;
   streetName: string;
   city: string;
   state: string;
   country: string;
   postcode: string;
+  id: string;
 }
 
 const UserTable: React.FC = () => {
-  const { users } = useList();
+  const { users, handleFilterValue } = useList();
 
   const [displayUser, setdisplayUser] = useState<IUser>({} as IUser);
   const [displayModalOpen, setdisplayModalOpen] = useState(false);
-
+  
+  const [searchInput, setSearchInput] = useState("");
+  
 
   function toggleDisplayModal(): void {
     setdisplayModalOpen(!displayModalOpen);
@@ -41,13 +47,14 @@ const UserTable: React.FC = () => {
   
   const userList = users.map(user => {
     return {
-      img: user.picture.thumbnail,
+      img: user.picture.large,
       gender: user.gender,
       nameFirest: user.name.first,
       nameLast: user.name.last,
       email: user.email,
       id: user.login.uuid,
-      dob: user.dob.date,
+      dob: new Intl.DateTimeFormat('pt-BR').format(new Date(user.dob.date)),
+      phone: user.phone,
       streetNumber: user.location.street.number,
       streetName: user.location.street.name,
       city: user.location.city,
@@ -57,11 +64,18 @@ const UserTable: React.FC = () => {
     }
   })
 
-  console.log(users)
-
 
   return (
     <Container>
+       <SearchContaine>
+        < input
+          type="text"
+          placeholder="Buscar Paciente"
+          onChange={(e) => {
+            setSearchInput(e.target.value.toLowerCase());
+          }} />
+        <RiSearchLine fontSize="30" onClick={() => handleFilterValue(searchInput)} />
+      </SearchContaine>
 
       <ModalDisplayUser
         isOpen={displayModalOpen}
@@ -83,8 +97,7 @@ const UserTable: React.FC = () => {
             <tr key={user.id}>
               <td>{user.nameFirest}</td>
               <td>{user.gender}</td>
-              <td>{new Intl.DateTimeFormat('pt-BR').format(
-                new Date(user.dob))}</td>
+              <td>{user.dob}</td>
               <td>
                 <button
                   type="button"
@@ -103,7 +116,11 @@ const UserTable: React.FC = () => {
 
         </tbody>
       </table>
+
+
     </Container>
+
+     
   );
 }
 

@@ -2,7 +2,7 @@ import { createContext, useEffect, useState, ReactNode, useContext } from 'react
 import api from '../services/api';
 
 interface User {
-  picture: { thumbnail: string };
+  picture: { large: string };
   name: {
     first: string;
     last: string;
@@ -11,7 +11,6 @@ interface User {
   gender: string;
   dob: { date: string };
   phone: string;
-  cell: string;
   login: { uuid: string };
   location: {
     street: {
@@ -33,6 +32,7 @@ interface UserProviderProps {
 
 interface UserContexData {
   users: User[];
+  handleFilterValue: (input: string) => void;
 }
 
 const UsersContext = createContext<UserContexData>(
@@ -49,8 +49,21 @@ export function UserProvider({ children }: UserProviderProps) {
       );
   }, []);
 
+  function handleFilterValue(input: string) {
+    const value = users.filter(user => {
+      if (
+        user.name.first.toLowerCase() === input ||
+        user.gender === input
+      ) {
+        return user;
+      }
+    });
+    setUsers(value);
+  };
+
+
   return (
-    <UsersContext.Provider value={{ users }}>
+    <UsersContext.Provider value={{ users, handleFilterValue, }}>
       {children}
     </UsersContext.Provider>
   )

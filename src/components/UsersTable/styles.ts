@@ -2,7 +2,11 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   margin-top: 4rem;
-
+   
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+ 
   table {
     width: 100%;
     border-spacing: 0 0.5rem;
@@ -51,5 +55,34 @@ export const Container = styled.div`
   }
 
     
+  }
+`;
+
+export const SearchContaine = styled.label`
+    display: flex;
+    width: 400px;
+    align-self: center;
+    
+    background: #fff;
+    margin-top: -150px;
+    border-radius: 8px;
+    padding: 18px 24px;
+    font-size: 16px;
+    border: 0;
+
+
+    svg {
+      color: #b7b7cc;
+    }
+
+    input {
+     flex: 1;
+     background: transparent;
+     border: 0;
+
+    &::placeholder {
+     color: #b7b7cc;
+    }
+
   }
 `;
