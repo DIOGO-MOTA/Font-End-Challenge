@@ -64,7 +64,7 @@ export const SearchContaine = styled.label`
     align-self: center;
     
     background: #fff;
-    margin-top: -150px;
+    margin-top: -140px;
     border-radius: 8px;
     padding: 18px 24px;
     font-size: 16px;
@@ -73,6 +73,12 @@ export const SearchContaine = styled.label`
 
     svg {
       color: #b7b7cc;
+      transition: filter 0.2s;
+      cursor: pointer;
+
+      &:hover {
+      filter: brightness(0.9);
+    }
     }
 
     input {

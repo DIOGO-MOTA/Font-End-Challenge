@@ -1,7 +1,8 @@
-import { createContext, useEffect, useState, ReactNode, useContext } from 'react';
+import { createContext, useEffect, useState, ReactNode, useContext, useCallback } from 'react';
 import api from '../services/api';
 
-interface User {
+
+export interface User {
   picture: { large: string };
   name: {
     first: string;
@@ -43,23 +44,24 @@ export function UserProvider({ children }: UserProviderProps) {
   const [users, setUsers] = useState<User[]>([]);
 
   useEffect(() => {
-    api.get('api/?results=10')
+    api.get('api/?results=50')
       .then(response =>
         setUsers(response.data.results)
       );
   }, []);
 
-  function handleFilterValue(input: string) {
+
+  const handleFilterValue = useCallback((input: string) => {
     const value = users.filter(user => {
       if (
         user.name.first.toLowerCase() === input ||
         user.gender === input
       ) {
         return user;
-      }
+      } 
     });
-    setUsers(value);
-  };
+      setUsers(value);
+  },[users]);
 
 
   return (

@@ -21,4 +21,5 @@ export const Content = styled.div`
     height: 3rem;
     border-radius: 50%;
   }
+
 `;

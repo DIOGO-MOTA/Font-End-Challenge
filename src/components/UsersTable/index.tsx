@@ -1,17 +1,19 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-import { useList } from '../../hooks/useList';
+import { useList, User } from '../../hooks/useList';
 import ModalDisplayUser from '../ModalDisplayUser';
 import { RiSearchLine } from "react-icons/ri";
 
+import Paginator from 'react-hooks-paginator';
 import { FiEye } from 'react-icons/fi';
 
 
 import { Container, SearchContaine } from './styles';
 
-interface IUser{
+
+interface IUser {
   img: string;
-  nameFirest:string;
+  nameFirest: string;
   nameLast: string;
   email: string;
   gender: string;
@@ -28,12 +30,23 @@ interface IUser{
 
 const UserTable: React.FC = () => {
   const { users, handleFilterValue } = useList();
+  
+  
+  const pageLimit = 10;
+  const [usersData, setUsersData] = useState<User[]>([]);
+  const [offset, setOffset] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
 
   const [displayUser, setdisplayUser] = useState<IUser>({} as IUser);
   const [displayModalOpen, setdisplayModalOpen] = useState(false);
-  
+
   const [searchInput, setSearchInput] = useState("");
-  
+
+ 
+
+  useEffect(() => {
+    setUsersData(users.slice(offset, offset + pageLimit));
+  }, [offset, users]);
 
   function toggleDisplayModal(): void {
     setdisplayModalOpen(!displayModalOpen);
@@ -44,8 +57,8 @@ const UserTable: React.FC = () => {
     toggleDisplayModal();
   }
 
-  
-  const userList = users.map(user => {
+
+  const userList = usersData.map(user => {
     return {
       img: user.picture.large,
       gender: user.gender,
@@ -67,7 +80,7 @@ const UserTable: React.FC = () => {
 
   return (
     <Container>
-       <SearchContaine>
+      <SearchContaine>
         < input
           type="text"
           placeholder="Buscar Paciente"
@@ -107,7 +120,7 @@ const UserTable: React.FC = () => {
                 >
                   <FiEye size={20} />
                 </button>
-              </td>          
+              </td>
               <td>
               </td>
             </tr>
@@ -118,9 +131,18 @@ const UserTable: React.FC = () => {
       </table>
 
 
+      <Paginator
+        totalRecords={users.length}
+        pageLimit={pageLimit}
+        pageNeighbours={1}
+        setOffset={setOffset}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+      />
+
     </Container>
 
-     
+
   );
 }
 
