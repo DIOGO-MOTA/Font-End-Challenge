@@ -8,7 +8,7 @@ const Header: React.FC = () => {
   return (
     <Container>
       <Content>
-      <h1>Pharma Inc</h1>
+        <a href="/">Pharma Inc</a>
         <img src='https://avatars.githubusercontent.com/u/53905314?s=400&u=e725d59a2b38aff6ed2e6a66b6e64ee507126347&v=4' alt="" />
       </Content>
    </Container>

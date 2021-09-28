@@ -2,7 +2,8 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   margin-top: 4rem;
-   
+  width: 100%;
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -53,7 +54,6 @@ export const Container = styled.div`
       filter: brightness(0.9);
     }
   }
-
     
   }
 `;
@@ -92,3 +92,5 @@ export const SearchContaine = styled.label`
 
   }
 `;
+
+

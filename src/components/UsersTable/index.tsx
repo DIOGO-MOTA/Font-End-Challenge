@@ -121,10 +121,7 @@ const UserTable: React.FC = () => {
                   <FiEye size={20} />
                 </button>
               </td>
-              <td>
-              </td>
             </tr>
-
           ))}
 
         </tbody>
