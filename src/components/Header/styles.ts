@@ -19,11 +19,6 @@ a {
    color: #fff;
    text-decoration: none;
    font-size: 2rem;
-   transition: opacity 0.2s;
-  
-   &:hover {
-     opacity: 0.6;
-   }
   }
 
   
