@@ -1,11 +1,11 @@
-#Font-End-Challenge
+# Font-End-Challenge
 
-##descrição sobre o projeto
+## Descrição sobre o projeto
 
 A empresa Pharma Inc, está trabalhando em um projeto em colaboração com sua base de clientes para facilitar a gestão e visualização da informação dos seus pacientes de maneira simples e objetiva em um Dashboard onde podem listar, filtrar e expandir os dados disponíveis.
 
 
-##Linguagem,Framework 
+## Linguagem,Framework 
 
 <ul>
 <li>React.js</li>
@@ -17,7 +17,7 @@ A empresa Pharma Inc, está trabalhando em um projeto em colaboração com sua b
 <li>TypeScript </li>
 </ul>
 
-##Como instalar e usar o projeto 
+## Como instalar e usar o projeto 
 
 <ul>
 <li>git clone</li>
