@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const Container = styled.div`
   margin-top: 4rem;
   width: 100%;
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -11,6 +10,14 @@ export const Container = styled.div`
   table {
     width: 100%;
     border-spacing: 0 0.5rem;
+
+  
+
+    tr {
+      border: 0;
+      margin-top: 10px;
+     
+    }
 
     th {
       color: var(--text-body);
@@ -38,24 +45,26 @@ export const Container = styled.div`
         color: var(--red);
       }
     }
-
+    
     button {
-    font-size: 1rem;
-    color: #FFF;
-    background: var(--blue-light);
-    border: 0;
-    padding: 0 2rem;
-    border-radius: 0.25rem;
-    height: 3rem;
+     font-size: 1rem;
+     color: #FFF;
+     background: var(--blue-light);
+     border: 0;
+     padding: 0 2rem;
+     border-radius: 0.25rem;
+     height: 3rem;
 
-    transition: filter 0.2s;
+     transition: filter 0.2s;
 
-    &:hover {
-      filter: brightness(0.9);
+     &:hover {
+       filter: brightness(0.9);
+     }
     }
-  }
+
     
   }
+
 `;
 
 export const SearchContaine = styled.label`
@@ -71,6 +80,7 @@ export const SearchContaine = styled.label`
     border: 0;
 
 
+
     svg {
       color: #b7b7cc;
       transition: filter 0.2s;
@@ -78,7 +88,8 @@ export const SearchContaine = styled.label`
 
       &:hover {
       filter: brightness(0.9);
-    }
+      }
+
     }
 
     input {
@@ -86,11 +97,26 @@ export const SearchContaine = styled.label`
      background: transparent;
      border: 0;
 
-    &::placeholder {
-     color: #b7b7cc;
+      &::placeholder {
+       color: #b7b7cc;
+      }
+
     }
 
-  }
+    @media (max-width: 650px) {
+      width: 100%;
+      display: flex;
+      align-self: center;
+
+      padding: 18px 6px;
+
+      input {
+        width: 100px;
+      }
+
+    }
+
+ 
 `;
 
 

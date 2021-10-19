@@ -7,6 +7,8 @@ import { RiSearchLine } from "react-icons/ri";
 import Paginator from 'react-hooks-paginator';
 import { FiEye } from 'react-icons/fi';
 
+import {Table, Thead, Tbody, Tr, Th, Td} from 'react-super-responsive-table'
+import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css'
 
 import { Container, SearchContaine } from './styles';
 
@@ -96,22 +98,22 @@ const UserTable: React.FC = () => {
         displayUser={displayUser}
       />
 
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>gender</th>
-            <th>Birth</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
+      <Table>
+        <Thead>
+          <Tr>
+            <Th>Name</Th>
+            <Th>gender</Th>
+            <Th>Birth</Th>
+            <Th>Actions</Th>
+          </Tr>
+        </Thead>
+        <Tbody>
           {userList.map(user => (
-            <tr key={user.id}>
-              <td>{user.nameFirest}</td>
-              <td>{user.gender}</td>
-              <td>{user.dob}</td>
-              <td>
+            <Tr key={user.id}>
+              <Td>{user.nameFirest}</Td>
+              <Td>{user.gender}</Td>
+              <Td>{user.dob}</Td>
+              <Td>
                 <button
                   type="button"
                   className="icon"
@@ -120,12 +122,12 @@ const UserTable: React.FC = () => {
                 >
                   <FiEye size={20} />
                 </button>
-              </td>
-            </tr>
+              </Td>
+            </Tr>
           ))}
 
-        </tbody>
-      </table>
+        </Tbody>
+      </Table>
 
 
       <Paginator
