@@ -33,8 +33,8 @@ const Modal: React.FC<IModalProps> = ({ children, isOpen, setIsOpen }) => {
           background: '#F0F0F5',
           color: '#000000',
           borderRadius: '8px',
-          width: '736px',
           border: 'none',
+          width: '80%',
         },
         overlay: {
           backgroundColor: '#121214e6',

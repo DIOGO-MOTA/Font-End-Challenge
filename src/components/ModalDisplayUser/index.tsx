@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Modal from '../Modal';
-import { Container, Header, UserContainer } from './styles';
+import { Container, ContentClose, Header, UserContainer } from './styles';
 import { RiCloseCircleFill } from "react-icons/ri";
 
 
@@ -41,7 +41,12 @@ const ModalDisplayUser: React.FC<IModalProps> = ({
 
       <Container>
 
-        <RiCloseCircleFill onClick={() => setIsOpen()} />
+
+        <ContentClose>
+          <div />
+          <RiCloseCircleFill onClick={() => setIsOpen()} />
+        </ContentClose>
+
 
         <Header>
           <img src={displayUser.img} alt={displayUser.nameFirest} />

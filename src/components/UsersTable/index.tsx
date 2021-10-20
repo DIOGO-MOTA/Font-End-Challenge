@@ -7,7 +7,7 @@ import { RiSearchLine } from "react-icons/ri";
 import Paginator from 'react-hooks-paginator';
 import { FiEye } from 'react-icons/fi';
 
-import {Table, Thead, Tbody, Tr, Th, Td} from 'react-super-responsive-table'
+import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table'
 import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css'
 
 import { Container, SearchContaine } from './styles';
@@ -32,8 +32,8 @@ interface IUser {
 
 const UserTable: React.FC = () => {
   const { users, handleFilterValue } = useList();
-  
-  
+
+
   const pageLimit = 10;
   const [usersData, setUsersData] = useState<User[]>([]);
   const [offset, setOffset] = useState(0);
@@ -44,7 +44,7 @@ const UserTable: React.FC = () => {
 
   const [searchInput, setSearchInput] = useState("");
 
- 
+
 
   useEffect(() => {
     setUsersData(users.slice(offset, offset + pageLimit));

@@ -23,8 +23,8 @@ export interface User {
     country: string;
     postcode: string;
   };
-  
-} ;
+
+};
 
 
 interface UserProviderProps {
@@ -58,10 +58,10 @@ export function UserProvider({ children }: UserProviderProps) {
         user.gender === input
       ) {
         return user;
-      } 
+      }
     });
-      setUsers(value);
-  },[users]);
+    setUsers(value);
+  }, [users]);
 
 
   return (

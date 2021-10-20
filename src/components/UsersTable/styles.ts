@@ -61,45 +61,44 @@ export const Container = styled.div`
        filter: brightness(0.9);
      }
     }
-
     
   }
 
 `;
 
 export const SearchContaine = styled.label`
-    display: flex;
-    width: 400px;
-    align-self: center;
-    
-    background: #fff;
-    margin-top: -140px;
-    border-radius: 8px;
-    padding: 18px 24px;
-    font-size: 16px;
-    border: 0;
+  display: flex;
+  width: 400px;
+  align-self: center;
+
+  background: #fff;
+  margin-top: -140px;
+  border-radius: 8px;
+  padding: 18px 24px;
+  font-size: 16px;
+  border: 0;
 
 
 
-    svg {
-      color: #b7b7cc;
-      transition: filter 0.2s;
-      cursor: pointer;
+svg {
+  color: #b7b7cc;
+  transition: filter 0.2s;
+  cursor: pointer;
 
-      &:hover {
-      filter: brightness(0.9);
-      }
+  &:hover {
+  filter: brightness(0.9);
+  }
 
-    }
+}
 
-    input {
-     flex: 1;
-     background: transparent;
-     border: 0;
+input {
+ flex: 1;
+ background: transparent;
+ border: 0;
 
-      &::placeholder {
-       color: #b7b7cc;
-      }
+  &::placeholder {
+   color: #b7b7cc;
+  }
 
     }
 
