@@ -10,23 +10,23 @@ export const Container = styled.div`
 `
 
 export const ContentClose = styled.div`
- width: 100%;
- display: flex;
- flex-direction: row;
- justify-content: space-between;
-
- svg {
+  width: 100%;
   display: flex;
-  width: 2rem;
-  height: 2rem;
-  color: var(--blue-light); 
-  
-  transition: filter 0.2s;
-  cursor: pointer;
+  flex-direction: row;
+  justify-content: space-between;
 
-  &:hover {
-  filter: brightness(0.9);
-  }
+  svg {
+    display: flex;
+    width: 2rem;
+    height: 2rem;
+    color: var(--blue-light); 
+    
+    transition: filter 0.2s;
+    cursor: pointer;
+
+    &:hover {
+    filter: brightness(0.9);
+    }
  }
 `
 
@@ -40,7 +40,7 @@ export const Header = styled.div`
     height: 10rem;
     border-radius: 50%;
 
-    margin-bottom: 0,5rem;
+    margin-bottom: 1rem;
   }
 
 
@@ -57,6 +57,7 @@ export const UserContainer = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
+  
 
 
   ul {
@@ -69,6 +70,7 @@ export const UserContainer = styled.div`
     
       strong {
         font-weight: 600;
+        font-size: 16px;
         color: var(--text-title);
         padding: 1rem 0.5rem;
 
@@ -76,8 +78,27 @@ export const UserContainer = styled.div`
 
       span {
         font-weight: 400;
+        font-size: 16px;
         color: var(--text-body);
       }
+ }
+
+    @media (max-width: 506px) {
+      li {
+    
+        strong {
+          font-weight: 600;
+          font-size: 12px;
+          color: var(--text-title);
+        }
+
+        span {
+          font-weight: 400;
+          font-size: 12px;
+          color: var(--text-body);
+        }
+      }
+
     }
 
 `
